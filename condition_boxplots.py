@@ -9,14 +9,13 @@ df = pd.read_excel('condition_counts1.xlsx')
 condition_columns = df.columns[2:]
 
 # Filter out languages with less than 32 members and not equal to "Total"
-df_filtered = df[(df['PRIMARYLANGUAGE_COUNT'] >= 32) & (df['PRIMARYLANGUAGE'] != "Total")]
+df_filtered = df[(df['PRIMARYLANGUAGE_COUNT'] >= 32)]
 
 # Perform calculations and create box plots for each condition
 for condition in condition_columns:
     # Filter the DataFrame for "Other Languages" and English speakers for each condition
     english_speakers_condition = df_filtered.loc[df_filtered['PRIMARYLANGUAGE'] == 'ENGLISH', condition]
-    print(df_filtered)
-    print(df_filtered.loc[df_filtered['PRIMARYLANGUAGE'] == 'ENGLISH'])
+    print(english_speakers_condition)
     other_languages_condition = df_filtered.loc[df_filtered['PRIMARYLANGUAGE'] != 'ENGLISH', condition]
 
     sns.boxplot(data=[other_languages_condition, english_speakers_condition],
