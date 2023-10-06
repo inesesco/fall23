@@ -9,7 +9,7 @@ df = pd.read_excel('condition_counts1.xlsx')
 condition_columns = df.columns[2:]
 
 # Filter out languages with less than 32 members and not equal to "Total"
-df_filtered = df[(df['PRIMARYLANGUAGE_COUNT'] >= 2000)]
+df_filtered = df[(df['PRIMARYLANGUAGE_COUNT'] >= 3000)]
 for condition in condition_columns:
     df_filtered[f'% with {condition}'] = (df_filtered[condition] / df_filtered['PRIMARYLANGUAGE_COUNT']) * 100
 
